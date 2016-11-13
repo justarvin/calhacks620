@@ -1,0 +1,5 @@
+def toByteArray(filename):
+	with open(filename, "rb") as imageFile:
+		f = imageFile.read()
+		b = bytearray(f)
+	print b[0]
