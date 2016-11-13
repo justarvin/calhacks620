@@ -7,12 +7,12 @@
 "scripts": ["background.js"],
 	"persistent": false
 },
-	  
+
 "page_action" : {
-	"default_icon" : "icon.png",
+	"default_icon" : "fingerprint.png",
 	"default_title" : "There's a 'G' in this URL!",
 	"default_popup": "popup.html"
-},	  
+},
 
 "permissions" : [
 	    "declarativeContent"
