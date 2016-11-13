@@ -69,6 +69,10 @@ class Runner:
 	def getPassword(self, website):
 		return self.database[website][1]
 
+	@app.route('/url')
+	def getURLS():
+		return [x for x in list(self.database.keys())]
+
 	def getUserNameList(self):
 		return [self.database[x][0] for x in list(self.database.keys())]
 
