@@ -1,12 +1,11 @@
 document.addEventListener('DOMContentLoaded', function() {
-    var link = document.getElementById('submitbutton');
+    var link = document.getElementById('enter');
     // onClick's logic below:
     link.addEventListener('click', function() {
-        myurl = document.getElementById("url").value
-        mypsw = document.getElementById("password").value
-        myuserid = document.getElementById("userid").value
-        console.log(myurl)
-        console.log(mypsw)
-        console.log(myuserid)
+        var myUsername = 'username';
+        var myPassword = 'password';
+        // find the fiends in your lo
+        document.getElementsByName('ctlLogin$UserName').value = myUsername;
+        document.getElementsByName('ctlLogin$Password').value = myPassword;
     });
 });

@@ -4,10 +4,11 @@ chrome.runtime.onInstalled.addListener(function() {
 // With a new rule ...
 		chrome.declarativeContent.onPageChanged.addRules([
 		{
-// That fires when a page's URL contains a 'g' ...
+// That fires when a page's URL contains login box ...
 			conditions: [
 				new chrome.declarativeContent.PageStateMatcher({
-					pageUrl: { urlContains: 'g' },
+					pageUrl: { urlContains: 'www.facebook.com' },
+					css: ["input[type='password']"]
 			}	)
 			],
 // And shows the extension's page action.
@@ -16,3 +17,5 @@ chrome.runtime.onInstalled.addListener(function() {
 		]);
 	});
 });
+
+
