@@ -36,24 +36,29 @@ print(holder[0][0])
 
 
 @app.route('/compareTo')
-def compareTo(self, string1, string2):
-	im1 = Image.open(string1)
-	im2 = Image.open(string2)
-	diff = ImageChops.difference(im2, im1)
-	pixels = list(diff.getdata())
-	count = 0
-	for i in range(len(pixels)):
-		count = count + pixels[i]
-	count = count / len(pixels)
-	if count < 90:
-		return True
-	return False
+def compareTo(website):
+	os.chdir("C:\Images")
+	im1 = Image.open(findRecent())
+	holder = np.loadtxt('keep.txt', list, delimiter = ', ').astype(str)
+	for x in holder:
+		count = 0
+		im2 = Image.open(x[0][2:-1])
+		diff = ImageChops.difference(im2, im1)
+		pixels = list(diff.getData())
+		for i in range(len(pixels)):
+			count = count + pixels[i]
+		count = count / len(pixels)
+		if count < 90:
+			if str(x[1][2:-1]) == website:
+				return [x[2][2:-1], x[3][2:-1]]
+	os.chdir("C:\Users\JSWAG JSWAG\Desktop\calhacks620\Hackathon Project")
+	return "Not in database"
 
 
 """Finds the most recent image scanned by the finger print scanner"""
 
 @app.route('/findRecent')
-def findRecent(self):
+def findRecent():
 	os.chdir("C:\Images")
 	x= 0
 	keepdict = {}
@@ -79,6 +84,8 @@ def getUsername(website):
 		if str(x[1][2:-1]) == website:
 			return x[2][2:-1]
 print(getUsername('www.facebook.com'))
+
+
 
 
 
