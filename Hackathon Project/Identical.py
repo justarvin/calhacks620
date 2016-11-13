@@ -8,15 +8,21 @@ class Runner:
 	os.chdir("C:/Images")
 	
 	database = {}
+
+	"""Constructs the database, takes in a list of URLs, list of usernames and list of listPasswords
+	"""
 	def __init__(self, filename, listURLs, listUsernames, listPasswords):
 		self.database = { x : y for x,y in zip(listURLs, zip(listUsernames, listPasswords))}
 		self.masterkey = filename
 
-	def addDataBase(websiteurl, username, password):
-		self.database[wibsiteurl] = (username, password)
+	"""Add another entry into the database."""
 
+	def addDataBase(self, websiteurl, username, password):
+		self.database[websiteurl] = (username, password)
 
-	def compareTo(string1, string2):
+	"""Compares the filenames of two prints, should be used to compare most recent against
+	master key."""
+	def compareTo(self, string1, string2):
 		im1 = Image.open(string1)
 		im2 = Image.open(string2)
 		diff = ImageChops.difference(im2, im1)
@@ -28,11 +34,11 @@ class Runner:
 		if count < 90:
 			return True
 		return False
-	print(compareTo("enroll_2016-11-11_22-38-59_00.bmp", "enroll_2016-11-11_22-39-12_00.bmp"))
+	
 
-
+	"""Finds the most recent image scanned by the finger print scanner"""
 	os.chdir("C:\Images")
-	def findRecent():
+	def findRecent(self):
 		x= 0
 		keepdict = {}
 		name = [filename for filename in os.listdir()]
@@ -42,10 +48,19 @@ class Runner:
 		print(keepdict[keeper[-1]])
 		return keepdict[keeper[-1]]
 
-	def getUsername(website):
+	"""Use to retrieve the username and password of the dictionary, assumes that compareTo 
+	returns True."""
+
+	def getUsername(self, website):
 		return self.database[website][0]
 
-	def getPassword(website):
+	def getPassword(self, website):
 		return self.database[website][1]
+
+	def getUserNameList(self):
+		return [self.database[x][0] for x in list(self.database.keys())]
+
+	def getPasswordList(self):
+		return [self.database[x][1] for x in list(self.database.keys())]
 
 	
