@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
 
-  "name": "CalHakcs 620",
+  "name": "Browser Action",
   "description": "Extension that allows for user info input",
   "version": "1.0",
 
